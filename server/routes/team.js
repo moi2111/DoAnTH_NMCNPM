@@ -9,7 +9,33 @@ const Team = require('../models/Team')
 // @access Public
 router.get('/', async (req, res) => {
 	try {
-		const teams = await Team.find().populate('user', ['username'])
+		const teams = await Team.find()
+			.populate('tournament', ['name'])
+			.populate('user', ['username'])
+
+		res.json({
+			success: true,
+			teams,
+		})
+	} catch (error) {
+		console.log(error)
+		res.status(500).json({
+			success: false,
+			message: 'Internal server error',
+		})
+	}
+})
+
+// @route GET api/teams
+// @desc Get team
+// @access Public
+router.get('/:tournamentId', async (req, res) => {
+	try {
+		const teams = await Team.find({
+			tournament: { _id: req.params.tournamentId },
+		})
+			.populate('tournament', ['name'])
+			.populate('user', ['username'])
 		res.json({
 			success: true,
 			teams,
@@ -27,9 +53,14 @@ router.get('/', async (req, res) => {
 // @desc Create team
 // @access Private
 router.post('/', verifyToken, async (req, res) => {
-	const { name, logo, trainer } = req.body
+	const { tournamentId, name, logo, trainer } = req.body
 
 	// simple validation
+	if (!tournamentId) {
+		return res
+			.status(400)
+			.json({ success: false, message: 'Tournament is required' })
+	}
 	if (!name) {
 		return res
 			.status(400)
@@ -44,6 +75,7 @@ router.post('/', verifyToken, async (req, res) => {
 				.json({ success: false, message: 'Name already exists' })
 		}
 		const newTeam = new Team({
+			tournament: tournamentId,
 			name,
 			logo,
 			trainer,
@@ -53,7 +85,7 @@ router.post('/', verifyToken, async (req, res) => {
 
 		res.json({
 			success: true,
-			message: 'Great, you made a team!',
+			message: 'Great, you added a team!',
 			team: newTeam,
 		})
 	} catch (error) {
@@ -69,7 +101,7 @@ router.post('/', verifyToken, async (req, res) => {
 // @desc Update team
 // @access Private
 router.put('/:id', verifyToken, async (req, res) => {
-	const { name, logo, trainer } = req.body
+	const { name, playerOrder, logo, trainer } = req.body
 
 	// simple validation
 	if (!name) {
@@ -81,6 +113,7 @@ router.put('/:id', verifyToken, async (req, res) => {
 	try {
 		let updatedTeam = {
 			name,
+			playerOrder,
 			logo: logo || '',
 			trainer: trainer || '',
 		}

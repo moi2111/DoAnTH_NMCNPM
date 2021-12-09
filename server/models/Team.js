@@ -1,8 +1,13 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-// câu lạc bộ
+// đội bóng
 const TeamSchema = new Schema({
+	tournament: {
+		type: Schema.Types.ObjectId,
+		ref: 'tournaments',
+		required: true,
+	},
 	name: {
 		type: String,
 		required: true,

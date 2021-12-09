@@ -1,38 +1,113 @@
-.App {
-  text-align: center;
+.landing {
+	position: relative;
+	background: url('./assets/landing.jpg') no-repeat center center/cover;
+	height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.dark-overlay {
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.landing-inner {
+	height: 100%;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.landing-inner form {
+	width: 30%;
 }
 
-.App-link {
-  color: #61dafb;
+.landing-inner h1,
+.landing-inner h4,
+.landing-inner p {
+	color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.spinner-container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-moz-transform: translateX(-50%) translateY(-50%);
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+}
+
+/* tournament button */
+.tournament-button {
+	padding-top: 0;
+	background: transparent;
+	border: none;
+}
+
+.tournament-button:hover {
+	background: transparent;
+	opacity: 0.6;
+}
+
+a.tournament-button.btn:focus,
+a.tournament-button.btn:active {
+	outline: none;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+button.tournament-button.btn:focus,
+button.tournament-button.btn:active {
+	outline: none;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+/* Floating add button */
+.btn-floating {
+	position: fixed;
+	right: 3rem;
+	bottom: 3rem;
+	background: transparent;
+	border: none;
+}
+
+.btn-floating:hover {
+	background: transparent;
+}
+
+.btn-floating:focus,
+.btn-floating:active {
+	outline: none;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+/* Add new tournament tooltip */
+.tooltip {
+	background: transparent;
+}
+
+.tooltip .arrow {
+	border-left-color: #78c2ad !important;
+}
+
+.tooltip-inner {
+	background: #78c2ad;
+}
+
+/* tournament border thicker */
+.border-success,
+.border-warning,
+.border-danger {
+	border-width: 2px;
+}
+
+/* tournament title */
+.tournament-title {
+	margin-bottom: 0.5rem;
 }

@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Landing from './components/layout/Landing'
+import Auth from './views/Auth'
+import AuthContextProvider from './contexts/AuthContext'
+import Dashboard from './views/Dashboard'
+import ProtectedRoute from './components/routing/ProtectedRoute'
+import About from './views/About'
+import TournamentContextProvider from './contexts/TournamentContext'
+import Teams from './views/Teams'
+import TeamContextProvider from './contexts/TeamContext'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<AuthContextProvider>
+			<TournamentContextProvider>
+				<TeamContextProvider>
+					<Router>
+						<Switch>
+							<Route exact path="/" component={Landing} />
+							<Route
+								exact
+								path="/login"
+								render={(props) => (
+									<Auth {...props} authRoute="login" />
+								)}
+							/>
+							<Route
+								exact
+								path="/register"
+								render={(props) => (
+									<Auth {...props} authRoute="register" />
+								)}
+							/>
+							<ProtectedRoute
+								exact
+								path="/dashboard"
+								component={Dashboard}
+							/>
+							<ProtectedRoute
+								exact
+								path="/about"
+								component={About}
+							/>
+							<ProtectedRoute
+								exact
+								path="/teams"
+								component={Teams}
+							/>
+						</Switch>
+					</Router>
+				</TeamContextProvider>
+			</TournamentContextProvider>
+		</AuthContextProvider>
+	)
 }
 
-export default App;
+export default App

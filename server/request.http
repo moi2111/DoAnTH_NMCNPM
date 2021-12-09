@@ -20,6 +20,9 @@ Content-Type: application/json
 GET http://localhost:5000/api/teams
 Content-Type: application/json
 
+###
+GET http://localhost:5000/api/teams/61974af2604d510b9ca9c3b9
+Content-Type: application/json
 
 ###
 POST http://localhost:5000/api/teams
@@ -27,13 +30,14 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTkxZGVlNTY1NGNiN2I1OTNiYWFiZWEiLCJpYXQiOjE2MzY5ODk1Mjl9.91jAhRoKupdqyCPJ8uuaTQKlbFy7n_l2j_u2eVS4CjE
 
 {
-    "name": "Doi bong Toaingo",
-    "logo": "Doi bong Toaingo",
-    "trainer": "Doi bong Toaingo"
+    "tournamentId": "619657e2b60f1e3a4c6ed1f2",
+    "name": "Manchester",
+    "logo": "https://icon2.cleanpng.com/20190227/zst/kisspng-football-fc-bayern-munich-logo-team-arquivo-de-and-more-pgina-2-de-2-bhs-designe-5c76250a8a12b5.3811488715512466025656.jpg",
+    "trainer": "Nguyễn Hoàng Tiến"
 }
 
 ###
-PUT http://localhost:5000/api/teams/61926be0d989d890787851db
+PUT http://localhost:5000/api/teams/61965d7dd02f171878a30e27
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTkyNmJiYWQ5ODlkODkwNzg3ODUxZDgiLCJpYXQiOjE2MzY5ODY0NTB9.4--Os84r6hPdii8PmJ3UEu6AP-9XspvlzySZjvGHS3o
 
@@ -44,7 +48,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTkyN
 }
 
 ###
-DELETE http://localhost:5000/api/teams/61926be0d989d890787851db
+DELETE http://localhost:5000/api/teams/61965d7dd02f171878a30e27
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTkxZGVlNTY1NGNiN2I1OTNiYWFiZWEiLCJpYXQiOjE2MzY5ODY2MDl9.tDpsA3dpDWgyHgxmWy76CI3vVMDu8OG6y08rX0i_Geo
 
@@ -66,12 +70,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTkxZ
     "name": "Toai",
     "age": "",
     "position": "Hậu vệ",
-    "number": "",
+    "number": "12",
     "avatar": "",
-    "height": "",
+    "height": "70",
     "weight": "",
     "scored": "",
-    "teamName": "Doi bong test"
+    "teamName": "Doi bong 1"
 }
 
 ###
@@ -94,5 +98,36 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTkxZ
 ###
 DELETE http://localhost:5000/api/players/61927c18e5903adbf7d30e63
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTkxZGVlNTY1NGNiN2I1OTNiYWFiZWEiLCJpYXQiOjE2MzY5ODc4MDZ9.w4BQtTHCdPRDvgFHi4haDxfLBnunE5GGGqVMSB4xMMg
+
+
+
+###
+GET http://localhost:5000/api/tournaments
+Content-Type: application/json
+
+###
+POST http://localhost:5000/api/tournaments
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTkxZGVlNTY1NGNiN2I1OTNiYWFiZWEiLCJpYXQiOjE2MzcwNTcxODl9.x7vmhYAlAEXUCxJ4u04nDMsocOE4LE6RmO7_QWe8u7Y
+
+{
+    "name": "Giải đấu ao làng 4",
+    "description": "Giải đấu dành cho những thanh niên trong xóm"
+}
+
+###
+PUT http://localhost:5000/api/tournaments/6193a0744ce00bf8a44acc78
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTkxZGVlNTY1NGNiN2I1OTNiYWFiZWEiLCJpYXQiOjE2MzcwNTcxODl9.x7vmhYAlAEXUCxJ4u04nDMsocOE4LE6RmO7_QWe8u7Y
+
+{
+    "name": "Giải đấu Thành phố",
+    "description": "Giải đấu dành cho những thanh niên nhà giàu",
+    "status": "Going on"
+}
+
+###
+DELETE http://localhost:5000/api/tournaments/6193a1836b298b70a5def73f
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTkxZGVlNTY1NGNiN2I1OTNiYWFiZWEiLCJpYXQiOjE2MzcwNTcxODl9.x7vmhYAlAEXUCxJ4u04nDMsocOE4LE6RmO7_QWe8u7Y
 
 
